@@ -1,0 +1,22 @@
+# Build output
+/yosi
+/bin/
+dist/
+build/
+
+# Go
+*.test
+*.out
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+
+# Temporary files
+*.tmp
+*.log
