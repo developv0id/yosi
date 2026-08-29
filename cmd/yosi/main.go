@@ -37,8 +37,7 @@ Usage:
 
 Commands:
   help       Show this help message
-  version    Show YOSI version
-`)
+  version    Show YOSI version`)
 }
 
 func printVersion() {
