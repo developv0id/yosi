@@ -36,9 +36,13 @@ func main() {
 			fmt.Printf("Error fetching repository index: %v\n", err)
 			return
 		}
-		fmt.Printf("Searching for package: %s\n", packageName)
-		fmt.Printf("Repository: %s\n", index.Repository)
-		fmt.Printf("Packages in index: %d\n", len(index.Packages))
+		for _, pkg := range index.Packages {
+			if pkg.Name == packageName {
+				fmt.Printf("%s %s\n", pkg.Name, pkg.Version)
+				return
+			}
+		}
+		fmt.Printf("Package %s not found\n", packageName)
 
 	default:
 		fmt.Printf("Unknown command: %s\n", command)
