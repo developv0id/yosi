@@ -1,25 +1,3 @@
-# YOSI
-
-```{=html}
-<p align="center">
-```
-`<strong>`{=html}Прототип клиент-серверной системы для
-автоматизированной сборки и установки программ из исходного
-кода.`</strong>`{=html}
-```{=html}
-</p>
-```
-```{=html}
-<p align="center">
-```
-`<a href="https://yosi-repo.ru">`{=html}🌐 Сайт проекта`</a>`{=html} •
-`<a href="https://repo.yosi-repo.ru/v1/index.json">`{=html}📦
-Репозиторий`</a>`{=html}
-```{=html}
-</p>
-```
-> **Dumb server. Smart client.**
-
 ------------------------------------------------------------------------
 
 ## 🇷🇺 Русская версия
