@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"yosi/internal/repo"
 )
 
 const version = "0.1.0"
@@ -29,7 +30,15 @@ func main() {
 		}
 
 		packageName := os.Args[2]
+
+		index, err := repo.FetchIndex()
+		if err != nil {
+			fmt.Printf("Error fetching repository index: %v\n", err)
+			return
+		}
 		fmt.Printf("Searching for package: %s\n", packageName)
+		fmt.Printf("Repository: %s\n", index.Repository)
+		fmt.Printf("Packages in index: %d\n", len(index.Packages))
 
 	default:
 		fmt.Printf("Unknown command: %s\n", command)

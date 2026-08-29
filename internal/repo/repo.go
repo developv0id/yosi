@@ -1,6 +1,7 @@
 package repo
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"time"
@@ -13,7 +14,7 @@ type Package struct {
 
 type Index struct {
 	Repository string    `json:"repository"`
-	Version    string    `json:"version"`
+	Version    int       `json:"version"`
 	Packages   []Package `json:"packages"`
 }
 
@@ -33,5 +34,11 @@ func FetchIndex() (Index, error) {
 	if resp.StatusCode != http.StatusOK {
 		return Index{}, fmt.Errorf("repository returned HTTP status %d", resp.StatusCode)
 	}
-	return Index{}, nil
+	var index Index
+	err = json.NewDecoder(resp.Body).Decode(&index)
+	if err != nil {
+		return Index{}, err
+	}
+
+	return index, nil
 }
