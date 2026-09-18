@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
 	"yosi/internal/repo"
 )
 
@@ -37,21 +38,23 @@ func main() {
 			fmt.Printf("Error fetching repository index: %v\n", err)
 			return
 		}
-		found := false
-		query := strings.ToLower(packageName)
+
+		query := strings.ToLower(strings.TrimSpace(packageName))
+		matches := 0
+
 		for _, pkg := range index.Packages {
 			if strings.Contains(strings.ToLower(pkg.Name), query) {
-				fmt.Printf("%s %s\n", pkg.Name, pkg.Version)
-				found = true
-				return
+				fmt.Printf("%-20s %s\n", pkg.Name, pkg.Version)
+				matches++
 			}
 		}
-		if !found {
+
+		if matches == 0 {
 			fmt.Printf("Package '%s' not found in the repository.\n", packageName)
 		}
 
 	default:
-		fmt.Printf("Unknown command: %s\n", command)
+		fmt.Printf("Unknown command: %s\n\n", command)
 		printHelp()
 	}
 }
