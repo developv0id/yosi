@@ -56,9 +56,32 @@ func main() {
 	default:
 		fmt.Printf("Unknown command: %s\n\n", command)
 		printHelp()
-	}
-}
 
+case "info":
+	if len(os.Args) < 3 {
+		fmt.Println("Usage: yosi info <package-name>")
+		return
+	}
+
+	packageName := os.Args[2]
+
+	index, err := repo.FetchIndex()
+	if err != nil {
+		fmt.Printf("Error fetching repository index: %v\n", err)
+		return
+	}
+
+	for _, pkg := range index.Packages {
+		if strings.EqualFold(pkg.Name, packageName) {
+			fmt.Printf("Name: %s\n", pkg.Name)
+			fmt.Printf("Version: %s\n", pkg.Version)
+			return
+		}
+	}
+
+	fmt.Printf("Package '%s' not found in the repository.\n", packageName)
+}
+}
 func printHelp() {
 	fmt.Println(`YOSI - source-based package manager
 
@@ -68,7 +91,8 @@ Usage:
 Commands:
   help       Show this help message
   version    Show YOSI version
-  search     Search for a package`)
+  search     Search for a package
+	info 			 Show package information`)
 }
 
 func printVersion() {
