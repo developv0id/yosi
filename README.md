@@ -1,5 +1,9 @@
 ## 🇷🇺 Русская версия
 
+Автор и основной разработчик —
+[Сергей Варакин](https://github.com/developv0id),
+также известный как `v0id` и `@developv0id`.
+
 ### Что такое YOSI?
 
 **YOSI** --- экспериментальный source-based пакетный менеджер для Linux
@@ -126,6 +130,11 @@ Debian-сервер.
 ------------------------------------------------------------------------
 
 ## 🇬🇧 English version
+
+Created and maintained by
+[Sergey Varakin](https://github.com/developv0id)
+(`v0id`, `@developv0id`).
+
 
 ### What is YOSI?
 
