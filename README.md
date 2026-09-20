@@ -234,9 +234,11 @@ machine rather than existing only as an abstract diagram.
 
 ------------------------------------------------------------------------
 
-## Author
+## License
 
-Created by **v0id@SergeyV**.
+Copyright © 2026 Sergey Varakin.
 
-YOSI is an experimental project. The architecture, package format and
-CLI may change during development.
+YOSI is free software licensed under the
+[GNU General Public License v3.0 or later](LICENSE).
+
+SPDX-License-Identifier: GPL-3.0-or-later
