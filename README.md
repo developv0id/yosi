@@ -242,3 +242,8 @@ YOSI is free software licensed under the
 [GNU General Public License v3.0 or later](LICENSE).
 
 SPDX-License-Identifier: GPL-3.0-or-later
+
+The GPL license applies to YOSI source code and documentation.
+
+Photographs, personal images and third-party assets are not covered
+by the GPL unless explicitly stated otherwise.
