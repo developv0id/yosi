@@ -1,0 +1,30 @@
+manifest_version = 1
+
+[package]
+name = "termtris"
+version = "1.9"
+description = "Tetris game for terminals"
+license = "GPL-3.0-or-later"
+homepage = "http://nuclear.mutantstargoat.com/sw/termtris/"
+maintainer = "YOSI Project"
+
+[source]
+url = "http://nuclear.mutantstargoat.com/sw/termtris/termtris-1.9.tar.gz"
+sha256 = "TODO"
+size = 0
+
+[dependencies]
+runtime = []
+build = []
+optional = []
+conflicts = []
+
+[build]
+system = "make"
+recipe = "build.toml"
+
+[install]
+prefix = "/usr/local"
+
+[metadata]
+architecture = ["x86_64"]
