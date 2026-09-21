@@ -53,35 +53,50 @@ func main() {
 			fmt.Printf("Package '%s' not found in the repository.\n", packageName)
 		}
 
+	case "info":
+		if len(os.Args) < 3 {
+			fmt.Println("Usage: yosi info <package-name>")
+			return
+		}
+
+		packageName := os.Args[2]
+
+		index, err := repo.FetchIndex()
+		if err != nil {
+			fmt.Printf("Error fetching repository index: %v\n", err)
+			return
+		}
+
+		for _, pkg := range index.Packages {
+			if strings.EqualFold(pkg.Name, packageName) {
+				manifest, err := repo.FetchManifest(pkg.Name, pkg.Version)
+				if err != nil {
+					fmt.Printf("Error fetching package manifest: %v\n", err)
+					return
+				}
+
+				fmt.Printf("Name: %s\n", manifest.Package.Name)
+				fmt.Printf("Version: %s\n", manifest.Package.Version)
+				fmt.Printf("Description: %s\n", manifest.Package.Description)
+				fmt.Printf("License: %s\n", manifest.Package.License)
+				fmt.Printf("Homepage: %s\n", manifest.Package.Homepage)
+				fmt.Printf("Maintainer: %s\n", manifest.Package.Maintainer)
+				fmt.Printf(
+					"Architecture: %s\n",
+					strings.Join(manifest.Metadata.Architecture, ", "),
+				)
+				return
+			}
+		}
+
+		fmt.Printf("Package '%s' not found in the repository.\n", packageName)
+
 	default:
 		fmt.Printf("Unknown command: %s\n\n", command)
 		printHelp()
-
-case "info":
-	if len(os.Args) < 3 {
-		fmt.Println("Usage: yosi info <package-name>")
-		return
 	}
-
-	packageName := os.Args[2]
-
-	index, err := repo.FetchIndex()
-	if err != nil {
-		fmt.Printf("Error fetching repository index: %v\n", err)
-		return
-	}
-
-	for _, pkg := range index.Packages {
-		if strings.EqualFold(pkg.Name, packageName) {
-			fmt.Printf("Name: %s\n", pkg.Name)
-			fmt.Printf("Version: %s\n", pkg.Version)
-			return
-		}
-	}
-
-	fmt.Printf("Package '%s' not found in the repository.\n", packageName)
 }
-}
+
 func printHelp() {
 	fmt.Println(`YOSI - source-based package manager
 
@@ -92,7 +107,7 @@ Commands:
   help       Show this help message
   version    Show YOSI version
   search     Search for a package
-	info 			 Show package information`)
+  info       Show package information`)
 }
 
 func printVersion() {
