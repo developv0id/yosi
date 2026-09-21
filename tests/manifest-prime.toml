@@ -1,0 +1,34 @@
+# YOSI Package Manifest — Prime
+# Reference template for the YOSI package manifest format.
+# Replace placeholder values when creating a package manifest.
+
+manifest_version = 1
+
+[package]
+name = "package-name"
+version = "package-version"
+description = "package-description"
+license = "package-license"
+homepage = "package-homepage-url"
+maintainer = "package-maintainer"
+
+[source]
+url = "source-tarball-url"
+sha256 = "source-sha256-checksum"
+size = 0
+
+[dependencies]
+runtime = ["runtime-dependency"]
+build = ["build-dependency"]
+optional = ["optional-dependency"]
+conflicts = ["conflicting-package"]
+
+[build]
+system = "build-system"
+recipe = "build.toml"
+
+[install]
+prefix = "/usr/local"
+
+[metadata]
+architecture = ["supported-architecture"]
