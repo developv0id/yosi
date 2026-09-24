@@ -7,12 +7,11 @@ import (
 )
 
 type Manifest struct {
-	ManifestVersion int                  `toml:"manifest_version"`
+	ManifestVersion string               `toml:"manifest_version"`
 	Package         ManifestPackage      `toml:"package"`
 	Source          ManifestSource       `toml:"source"`
 	Dependencies    ManifestDependencies `toml:"dependencies"`
-	Build           ManifestBuild        `toml:"build"`
-	Install         ManifestInstall      `toml:"install"`
+	Recipe          ManifestRecipe       `toml:"recipe"`
 	Metadata        ManifestMetadata     `toml:"metadata"`
 }
 
@@ -26,9 +25,10 @@ type ManifestPackage struct {
 }
 
 type ManifestSource struct {
-	URL    string `toml:"url"`
-	SHA256 string `toml:"sha256"`
-	Size   int64  `toml:"size"`
+	URL             string `toml:"url"`
+	SHA256          string `toml:"sha256"`
+	Size            int64  `toml:"size"`
+	StripComponents int    `toml:"strip_components"`
 }
 
 type ManifestDependencies struct {
@@ -38,17 +38,13 @@ type ManifestDependencies struct {
 	Conflicts []string `toml:"conflicts"`
 }
 
-type ManifestBuild struct {
-	System string `toml:"system"`
-	Recipe string `toml:"recipe"`
-}
-
-type ManifestInstall struct {
-	Prefix string `toml:"prefix"`
+type ManifestRecipe struct {
+	File string `toml:"file"`
 }
 
 type ManifestMetadata struct {
-	Architecture []string `toml:"architecture"`
+	Architectures []string `toml:"architectures"`
+	OS            []string `toml:"os"`
 }
 
 func FetchManifest(name, version string) (Manifest, error) {

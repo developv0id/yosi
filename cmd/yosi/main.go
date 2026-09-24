@@ -83,7 +83,7 @@ func main() {
 				fmt.Printf("Maintainer: %s\n", manifest.Package.Maintainer)
 				fmt.Printf(
 					"Architecture: %s\n",
-					strings.Join(manifest.Metadata.Architecture, ", "),
+					strings.Join(manifest.Metadata.Architectures, ", "),
 				)
 				return
 			}
