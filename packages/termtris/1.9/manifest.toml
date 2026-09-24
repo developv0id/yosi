@@ -1,4 +1,4 @@
-manifest_version = 1
+manifest_version = "V2.0"
 
 [package]
 name = "termtris"
@@ -9,9 +9,10 @@ homepage = "http://nuclear.mutantstargoat.com/sw/termtris/"
 maintainer = "YOSI Project"
 
 [source]
-url = "http://nuclear.mutantstargoat.com/sw/termtris/termtris-1.9.tar.gz"
-sha256 = "TODO"
-size = 0
+url = "https://github.com/jtsiomb/termtris/archive/refs/tags/v1.9.tar.gz"
+sha256 = "1aecc1de795185a70d550d3e8d3212d97ffd997af9796ab220e055e039443dbe"
+size = 38007
+strip_components = 1
 
 [dependencies]
 runtime = []
@@ -19,12 +20,9 @@ build = []
 optional = []
 conflicts = []
 
-[build]
-system = "make"
-recipe = "build.toml"
-
-[install]
-prefix = "/usr/local"
+[recipe]
+file = "build.toml"
 
 [metadata]
-architecture = ["x86_64"]
+architectures = ["any"]
+os = ["linux"]

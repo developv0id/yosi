@@ -1,0 +1,20 @@
+recipe_version = "V1.0"
+
+[requirements]
+commands = ["make", "cc"]
+
+[policy]
+network = false
+
+[[build.steps]]
+command = "make"
+args = []
+working_directory = "."
+environment = {}
+
+[[install.steps]]
+command = "make"
+args = ["install"]
+working_directory = "."
+environment = {}
+destdir = true

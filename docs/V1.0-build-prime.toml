@@ -1,0 +1,36 @@
+# YOSI Build Recipe V1.0
+# Reference template describing how verified and extracted
+# source code is configured, built, tested and staged.
+
+recipe_version = "V1.0"
+
+[requirements]
+commands = []
+
+[policy]
+network = false
+
+[[configure.steps]]
+command = "./configure"
+args = []
+working_directory = "."
+environment = {}
+
+[[build.steps]]
+command = "make"
+args = []
+working_directory = "."
+environment = {}
+
+[[test.steps]]
+command = "make"
+args = ["check"]
+working_directory = "."
+environment = {}
+
+[[install.steps]]
+command = "make"
+args = ["install"]
+working_directory = "."
+environment = {}
+destdir = true

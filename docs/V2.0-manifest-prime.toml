@@ -1,0 +1,32 @@
+# YOSI Package Manifest V2.0
+# Reference template for package metadata, source information
+# and dependency declarations.
+
+manifest_version = "V2.0"
+
+[package]
+name = "package-name"
+version = "package-version"
+description = "package-description"
+license = "package-license"
+homepage = "package-homepage-url"
+maintainer = "package-maintainer"
+
+[source]
+url = "source-archive-url"
+sha256 = "source-sha256-checksum"
+size = 0
+strip_components = 1
+
+[dependencies]
+runtime = []
+build = []
+optional = []
+conflicts = []
+
+[recipe]
+file = "build.toml"
+
+[metadata]
+architectures = ["any"]
+os = ["linux"]
